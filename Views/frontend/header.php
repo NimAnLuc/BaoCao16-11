@@ -64,3 +64,15 @@
          </div>
       </div>
    </section>
+   <section class="hdl-mainmenu bg-main">
+      <div class="container">
+         <div class="row">
+            <div class="col-12 d-none d-md-block col-md-2 d-none d-md-block">
+               <?php require_once 'views/frontend/mod-menu-listcategory.php' ;?>
+            </div>
+            <div class="col-12 col-md-9">
+            <?php require_once 'views/frontend/mod-mainmenu.php' ;?>
+            </div>
+         </div>
+      </div>
+   </section>

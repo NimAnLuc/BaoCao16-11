@@ -63,5 +63,6 @@ if(strlen($_FILES['image']['name'])>0)
 
     var_dump($brand);
     $brand->save();
+
     header("location:index.php?option=brand");
 }
