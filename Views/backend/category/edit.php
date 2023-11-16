@@ -15,7 +15,7 @@ if($category==null)
             <div class="container-fluid">
                <div class="row mb-2">
                   <div class="col-sm-12">
-                     <h1 class="d-inline">Tất cả danh mục</h1>
+                     <h1 class="d-inline">Cập nhật danh mục</h1>
                   </div>
                </div>
             </div>
@@ -24,7 +24,7 @@ if($category==null)
          <section class="content">
             <div class="card">
                <div class="card-header text-right">
-                  <button class="btn btn-sm btn-success" type="sumbit" name="THEM">
+                  <button class="btn btn-sm btn-success" type="sumbit" name="CAPNHAT">
                      <i class="fa fa-save" aria-hidden="true"></i>
                      Lưu
                   </button>
@@ -33,6 +33,7 @@ if($category==null)
                   <div class="row">
                      <div class="col-md-4">
                         <div class="mb-3">
+                        <input type="hidden" value="<?=$category->id;?>" name="id">
                            <label>Tên danh mục (*)</label>
                            <input type="text" name="name" value="<?=$category->name;?>" id="name" placeholder="Nhập tên danh mục" class="form-control"
                               onkeydown="handle_slug(this.value);">

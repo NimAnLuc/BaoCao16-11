@@ -19,7 +19,7 @@ if(isset($_POST['THEM']))
     //luu vao csdl
     //ínet
     $banner->save();
-    //
+    MyClass::set_flash('message', ['msg' => 'Thêm thành công', 'type' => 'success']);
     header("location:index.php?option=banner");
   
 }
@@ -28,12 +28,13 @@ if(isset($_POST['CAPNHAT'])){
     $banner= Banner::find ($id);
     if($banner==null)
 {
+    MyClass::set_flash('message', ['msg' => 'Lỗi trang 404', 'type' => 'danger']);
     header("location:index.php?option=banner");
 }
     $banner->name= $_POST ['name'];
-    $banner->slug= (strlen($_POST['slug'])>0)? $_POST['slug']:MyClass :: str_slug($_POST['name']);
-    $banner->description= $_POST ['description'];
-    $banner->status= $_POST ['status'];
+    $banner->link = $_POST['link'];
+    $banner->position = $_POST['position'];
+    $banner->status = $_POST['status'];
 
 
 
@@ -54,5 +55,6 @@ if(strlen($_FILES['image']['name'])>0)
 
     var_dump($banner);
     $banner->save();
+    MyClass::set_flash('message', ['msg' => 'Cập nhật thành công', 'type' => 'success']);
     header("location:index.php?option=banner");
 }

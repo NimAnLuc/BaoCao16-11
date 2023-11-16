@@ -7,7 +7,7 @@ $list_category = Category::where('status','!=',0)->orderBy('created_at','DESC')
 $category_id_html='';
 foreach($list_category as $category)
 {
-   $category_id_html="<option value='$category->id'>$category->name</option>";
+   $category_id_html.="<option value='$category->id'>$category->name</option>";
 }
 ?>
 <?php require_once "../views/backend/header.php";?>
@@ -17,7 +17,7 @@ foreach($list_category as $category)
          <section class="content-header">
             <div class="container-fluid">
                <div class="row mb-2">
-                  <div class="col-sm-12">
+                  <div class="col-sm-12"> 
                      <h1 class="d-inline">Tất cả danh mục</h1>
                   </div>
                </div>
@@ -26,13 +26,22 @@ foreach($list_category as $category)
          <!-- Main content -->
          <section class="content">
             <div class="card">
-               <div class="card-header text-right">
-                  <button class="btn btn-sm btn-success" type="sumbit" name="THEM">
+            <div class="card-header">
+                  <div class="row">
+                  <div class="col-md-6">
+                  <a class="btn btn-info btn xs" href="index.php?option=category">Tất cả</a>
+                     <a class="btn btn-danger btn xs" href="index.php?option=category&cat=trash"><i class="fas fa-trash"></i>Thùng rác</a>
+                  </div>
+                     <div class="col-md-6 text-right">
+                        <button class="btn btn-sm btn-success" type="sumbit" name="THEM">
                      <i class="fa fa-save" aria-hidden="true"></i>
                      Lưu
                   </button>
                </div>
+                  </div>
+               </div>
                <div class="card-body">
+               <?php require_once "../views/backend/message.php"; ?>
                   <div class="row">
                      <div class="col-md-4">
                         <div class="mb-3">
@@ -87,7 +96,7 @@ foreach($list_category as $category)
                                     <input type="checkbox">
                                  </td>
                                  <td>
-                                    <img src="../public/images/category/<?php echo $item->image; ?>" alt="<?php echo $item->image; ?>">
+                                    <img class="img-fluid" src="../public/images/category/<?php echo $item->image; ?>" alt="<?php echo $item->image; ?>">
                                  </td>
                                  <td>
                                     <div class="name">
@@ -95,19 +104,19 @@ foreach($list_category as $category)
                                     </div>
                                     <div class="function_style">
                                        <?php if($item->status==1):?>
-                                          <a class="btn btn-success btn xs" href="index.php?option=category&cat=status&id= <?php echo $item->id; ?>">
+                                          <a class="btn btn-success btn xs" href="index.php?option=category&cat=status&id=<?php echo $item->id; ?>">
                                           <i class="fas fa-toggle-on"></i>Hiện</a> |
                                        <?php else:?>
-                                          <a class="btn btn-danger btn xs"href="index.php?option=category&cat=status&id= <?php echo $item->id; ?>">
+                                          <a class="btn btn-danger btn xs"href="index.php?option=category&cat=status&id=<?php echo $item->id; ?>">
                                           <i class="fas fa-toggle-off"></i>Ẩn</a> |
                                        <?php endif;?>
-                                       <a class="btn btn-primary btn xs" href="index.php?option=category&cat=edit&id= <?php echo $item->id; ?>">
+                                       <a class="btn btn-primary btn xs" href="index.php?option=category&cat=edit&id=<?php echo $item->id; ?>">
                                        <i class="fas fa-edit"></i>Chỉnh sửa
 
                                        </a> |   
-                                       <a class="btn btn-info btn xs"   href="index.php?option=category&cat=show&id= <?php echo $item->id; ?>">
+                                       <a class="btn btn-info btn xs"   href="index.php?option=category&cat=show&id=<?php echo $item->id; ?>">
                                        <i class="fas fa-eye"></i>Chi tiết</a> |
-                                       <a class="btn btn-danger btn xs" href="index.php?option=category&cat=delete&id= <?php echo $item->id; ?>">
+                                       <a class="btn btn-danger btn xs" href="index.php?option=category&cat=delete&id=<?php echo $item->id; ?>">
                                        <i class="fas fa-trash"></i>Xoá</a>
                                     </div>
                                  </td>

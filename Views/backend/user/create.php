@@ -1,5 +1,4 @@
 <?php require_once "../views/backend/header.php";?>
-
 <form action="index.php?option=user&cat=process" method="post" enctype="multipart/form-data">
       <!-- CONTENT -->
       <div class="content-wrapper">
@@ -15,7 +14,7 @@
          <section class="content">
             <div class="card">
                <div class="card-header text-right">
-                  <a href="user_index.html" class="btn btn-sm btn-info">
+                  <a href="index.php?option=user" class="btn btn-sm btn-info">
                      <i class="fa fa-arrow-left" aria-hidden="true"></i>
                      Về danh sách
                   </a>
@@ -60,6 +59,11 @@
                            <option value="1">Admin</option>
                            </select>
                         </div>
+                        <label>Giới tính</label>
+                           <select name="gender" class="form-control">
+                           <option value="1">Nam</option>
+                           <option value="2">Nữ</option>
+                           </select>
                         <div class="mb-3">
                            <label>Hình đại diện</label>
                            <input type="file" name="image" class="form-control">

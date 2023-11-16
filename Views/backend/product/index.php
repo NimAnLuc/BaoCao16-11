@@ -1,6 +1,13 @@
 <?php
 use App\Models\Product;
-$list = Product::where('status','!=',0)->orderBy('created_at','DESC')->get();
+
+$listid = Product::join('category', 'product.category_id', '=','category.id')
+ ->join('brand', 'product.brand_id', '=','brand.id')
+ ->where('product.status', '!=', 0)
+ ->orderBy('product.created_at', 'desc')
+ ->select("product.*", "category.name as category_name", "brand.name as brand_name")
+ ->get();
+
 ?>
 <?php require_once "../views/backend/header.php";?>
       <!-- CONTENT -->
@@ -12,12 +19,17 @@ $list = Product::where('status','!=',0)->orderBy('created_at','DESC')->get();
                      <div class="col-sm-12">
                         <h1 class="d-inline">Tất cả sản phẩm</h1>
                         <a href="index.php?option=product&cat=create"  class="btn btn-sm btn-primary">Thêm sản phẩm</a>
+                        <div class="col-md-6">
+                        <a class="btn btn-info btn xs" href="index.php?option=product">Tất cả</a>
+                     <a class="btn btn-danger btn xs" href="index.php?option=product&cat=trash"><i class="fas fa-trash"></i>Thùng rác</a>
+                  </div>
                      </div>
                   </div>
                </div>
             </section>
             <!-- Main content -->
             <section class="content">
+            <?php require_once "../views/backend/message.php"; ?>
                <div class="card">
                   <div class="card-header">
                      <select name="" id="" class="form-control d-inline" style="width:100px;">
@@ -42,14 +54,14 @@ $list = Product::where('status','!=',0)->orderBy('created_at','DESC')->get();
                            </tr>
                         </thead>
                         <tbody>
-                        <?php if (count($list)>0):?>
-                              <?php foreach($list as $item) : ?>
+                        <?php if (count($listid)>0):?>
+                              <?php foreach($listid as $item) : ?>
                            <tr class="datarow">
                               <td>
                                  <input type="checkbox">
                               </td>
                               <td>
-                                 <img src="../public/images/product/<?=$item->image;?>" alt="<?=$item->image;?>">
+                                 <img class="img-fluid" src="../public/images/product/<?=$item->image;?>" alt="<?=$item->image;?>">
                               </td>
                               <td>
                                  <div class="name">
@@ -57,27 +69,27 @@ $list = Product::where('status','!=',0)->orderBy('created_at','DESC')->get();
                                  </div>
                                  <div class="function_style">
                                        <?php if($item->status==1):?>
-                                          <a class="btn btn-success btn xs" href="index.php?option=product&cat=status">
-                                          <i class="fas fa-toggle-on"></i>Hiện</a> |
+                                          <a class="btn btn-success btn xs" href="index.php?option=product&cat=status&id=<?php echo $item->id;?>">
+                                          <i class="fas fa-toggle-on"></i>Hiện</1a> |
                                        <?php else:?>
-                                          <a class="btn btn-danger btn xs"href="index.php?option=product&cat=status&id= <?php echo $item->id; ?>">
+                                          <a class="btn btn-danger btn xs"href="index.php?option=product&cat=status&id=<?php echo $item->id;?>">
                                           <i class="fas fa-toggle-off"></i>Ẩn</a> |
                                        <?php endif;?>
-                                       <a class="btn btn-primary btn xs" href="index.php?option=product&cat=edit&id= <?php echo $item->id; ?>">
+                                       <a class="btn btn-primary btn xs" href="index.php?option=product&cat=edit&id=<?php echo $item->id; ?>">
                                        <i class="fas fa-edit"></i>Chỉnh sửa
 
                                        </a> |   
-                                       <a class="btn btn-info btn xs"   href="index.php?option=product&cat=show&id= <?php echo $item->id; ?>">
+                                       <a class="btn btn-info btn xs"   href="index.php?option=product&cat=show&id=<?php echo $item->id; ?>">
                                        <i class="fas fa-eye"></i>Chi tiết</a> |
-                                       <a class="btn btn-danger btn xs" href="index.php?option=product&cat=delete&id= <?php echo $item->id; ?>">
+                                       <a class="btn btn-danger btn xs" href="index.php?option=product&cat=delete&id=<?php echo $item->id; ?>">
                                        <i class="fas fa-trash"></i>Xoá</a>
                                     </div>
                               </td>
-                              <td><?=$item->category_id;?></td>
-                              <td><?=$item->brand_id?></td>
+                              <td class="text-center"><?= $item->category_name; ?> </td>
+                              <td class="text-center"><?= $item->brand_name; ?> </td>
                               <td><?=$item->qty?></td>
                               <td><?=$item->price?></td>
-                              <td><?=$item->price_sale?></td>
+                              <td><?=$item->pricesale?></td>
                            </tr>
                            <?php endforeach; ?>
                               <?php endif;?>

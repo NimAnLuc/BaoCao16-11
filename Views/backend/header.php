@@ -6,12 +6,11 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Tiêu đề giao diện</title>
-   <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,70...fallback">
-      <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
-      <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
-      <link rel="stylesheet" href="../public/datatables/css/dataTables.min.css">
-      <link rel="stylesheet" href="../public/css/backend.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,70...fallback">
+   <link rel="stylesheet" href="../public/plugins/fontawesome-free/css/all.min.css">
+   <link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
+   <link rel="stylesheet" href="../public/datatables/css/dataTables.min.css">
+   <link rel="stylesheet" href="../public/css/backend.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -22,10 +21,10 @@
                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-               <a href="index.html" class="nav-link">Home</a>
+               <a href="index.php" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-               <a href="#" class="nav-link">Contact</a>
+               <a href="index.php?option=contact" class="nav-link">Contact</a>
             </li>
          </ul>
          <ul class="navbar-nav ml-auto">
@@ -36,8 +35,7 @@
                <div class="navbar-search-block">
                   <form class="form-inline">
                      <div class="input-group input-group-sm">
-                        <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                           aria-label="Search">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                         <div class="input-group-append">
                            <button class="btn btn-navbar" type="submit">
                               <i class="fas fa-search"></i>
@@ -54,27 +52,25 @@
                <a class="nav-link" href="logout.php" role="button">
                   <i class="fas fa-power-off"></i> Đăng xuất
                </a>
-</li>
+            </li>
          </ul>
       </nav>
       <aside class="main-sidebar sidebar-dark-primary elevation-4">
          <a href="index.php" class="brand-link">
-            <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-               class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="../public/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
             <span class="brand-text font-weight-light">QUẢN TRỊ</span>
          </a>
          <div class="sidebar">
-<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                <div class="image">
-                  <img src="../public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                  <img src="../public/images/user/<?= ($_SESSION['image']) ?? 'image.png'; ?>" class="img-circle elevation-2" alt="User Image">
                </div>
                <div class="info">
-                  <a href="#" class="d-block"><?= ($_SESSION['name'])??"name";?></a>
+                  <a href="#" class="d-block"><?= ($_SESSION['name']) ?? "name"; ?></a>
                </div>
             </div>
             <nav class="mt-2">
-               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                  data-accordion="false">
+               <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                   <li class="nav-item">
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -117,7 +113,7 @@
                            <a href="index.php?option=post" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Tất cả bài viết</p>
-</a>
+                           </a>
                         </li>
                         <li class="nav-item">
                            <a href="index.php?option=topic" class="nav-link">
@@ -126,7 +122,7 @@
                            </a>
                         </li>
                         <li class="nav-item">
-<a href="page_index.html" class="nav-link">
+                           <a href="index.php?option=page" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Trang đơn</p>
                            </a>
@@ -149,13 +145,13 @@
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a href="import_index.html" class="nav-link">
+                           <a href="index.php?option=import" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Nhập hàng</p>
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a href="export_index.html" class="nav-link">
+                           <a href="index.php?option=export" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Xuất hàng</p>
                            </a>
@@ -163,7 +159,7 @@
                      </ul>
                   </li>
                   <li class="nav-item">
-                     <a href="customer_index.html" class="nav-link">
+                     <a href="index.php?option=customer" class="nav-link">
                         <i class="nav-icon far fa-circle text-danger"></i>
                         <p class="text">Khách hàng</p>
                      </a>
@@ -183,14 +179,14 @@
                         </p>
                      </a>
                      <ul class="nav nav-treeview">
-<li class="nav-item">
+                        <li class="nav-item">
                            <a href="index.php?option=menu" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Menu</p>
                            </a>
                         </li>
                         <li class="nav-item">
-<a href="index.php?option=banner" class="nav-link">
+                           <a href="index.php?option=banner" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Banner</p>
                            </a>
@@ -213,7 +209,7 @@
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a href="config_index.html" class="nav-link">
+                           <a href="index.php?option=config" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Cấu hình</p>
                            </a>

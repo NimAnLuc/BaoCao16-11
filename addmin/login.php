@@ -22,7 +22,7 @@
     $error = "";
         if(isset($_POST['DANGNHAP'])){
             $username =$_POST['username'];
-            $password =sha1($_POST['password']);
+            $password =$_POST['password'];
             $args = [
 
                 ['password','=',$password],

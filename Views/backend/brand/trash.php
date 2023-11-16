@@ -39,6 +39,7 @@ $list = Brand::where('status','=',0)->orderBy('Created_at','DESC')->get();
                   </div>
                </div>
                <div class="card-body">
+               <?php require_once "../views/backend/message.php";?>
                   <div class="row">
                      <div class="col-md-12">
                         <table class="table table-bordered">
@@ -60,7 +61,7 @@ $list = Brand::where('status','=',0)->orderBy('Created_at','DESC')->get();
                                     <input type="checkbox">
                                  </td>
                                  <td>
-                                 <img class="img-fluid" src="../public/images/brand/<?=$item->image;?>" alt="<?$item->image;?>">
+                                 <img class="img-fluid" src="../public/images/brand/<?=$item->image;?>" alt="<?=$item->image;?>">
                                  </td>
                                  <td>
                                     <div class="name">

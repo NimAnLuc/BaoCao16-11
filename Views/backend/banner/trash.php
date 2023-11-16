@@ -25,6 +25,7 @@ $list = Banner::where($args)->orderBy('created_at','DESC')->get();
                   Noi dung
                </div>
                <div class="card-body">
+               <?php require_once "../views/backend/message.php"; ?>
                   <table class="table table-bordered" id="mytable">
                      <thead>
                         <tr>

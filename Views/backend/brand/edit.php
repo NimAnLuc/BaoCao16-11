@@ -1,9 +1,10 @@
 <?php
+use App\Libraries\MyClass;
 use App\Models\Brand;
 $id=$_REQUEST['id'];
 $brand=Brand::find($id);
 if($brand==null)
-{
+{    MyClass::set_flash('message',['msg'=>'Lỗi trang 404','type'=>'danger']);
     header("location:index.php?option=brand");
 }
 ?>
@@ -35,6 +36,7 @@ if($brand==null)
                   </a>
                </div>
                <div class="card-body">
+               <?php require_once "../views/backend/message.php";?>
                   <div class="row">
                      <div class="col-md-4">
                         <div class="mb-3">
